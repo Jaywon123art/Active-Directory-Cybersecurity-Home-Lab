@@ -14,19 +14,19 @@ This document provides an overview of my Active Directory Cybersecurity Home Lab
 
 ## Virtual Machines
 
-DC01
+### DC01
 - Operating System: Windows Server 2022 Standard Evaluation
 - Role: Domain Controller and DNS Server
 - IP Address: 192.168.56.10
-CL01
+### CL01
 - Operating System: Windows 7 Professional 64-bit
 - Role: Domain-joined client
 - IP Address: 192.168.56.101
-CL02
+### CL02
 - Operating System: Windows 7 Professional 64-bit
 - Role: Domain-joined client
 - IP Address: 192.168.56.102
-KALI01
+### KALI01
 - Operating System: Kali Linux
 - Role: Cybersecurity testing machine
 - IP Address: 192.168.56.50
