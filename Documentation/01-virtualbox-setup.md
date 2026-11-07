@@ -27,12 +27,10 @@ This document describes the installation and initial configuration of Oracle Vir
 
 ## Virtual Network Configuration
 
-Add:
-
-AD-LAB
+### AD-LAB
 - Network Type: Internal Network
 - Purpose: Private communication between lab virtual machines.
-NAT-LAB
+### NAT-LAB
 - Network Type: NAT Network
 - Subnet: 10.10.10.0/24
 - Gateway: 10.10.10.1
