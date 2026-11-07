@@ -15,6 +15,12 @@ This document describes the network configuration of my Active Directory Cyberse
 - Subnet: 10.10.10.0/24
 - Gateway: 10.10.10.1
 - DHCP: Enabled
+### Network Adapter Configuration
+- Adapter 1: Internal Network (AD-LAB)
+- Adapter 1 Purpose: Private lab communication.
+- Adapter 2: NAT Network (NAT-LAB)
+- Adapter 2 Purpose: External network access.
+- NAT-LAB Address Assignment: DHCP.
 
 ## IP Addressing
 
