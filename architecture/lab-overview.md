@@ -34,11 +34,11 @@ This document provides an overview of my Active Directory Cybersecurity Home Lab
 
 ## Network Configuration
 
-Domain Information
+### Domain Information
 - Domain Name: corp.in
 - NetBIOS Name: CORP
 - DNS Server: 192.168.56.10
-VirtualBox Networks
+### VirtualBox Networks
 - Internal Network: AD-LAB
 - NAT Network: NAT-LAB
 - NAT Subnet: 10.10.10.0/24
