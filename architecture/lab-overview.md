@@ -12,7 +12,7 @@ This document provides an overview of my Active Directory Cybersecurity Home Lab
 - Available Storage: 128 GB
 - Virtualization Software: Oracle VirtualBox
 
-- ## Virtual Machines
+## Virtual Machines
 
 DC01
 - Operating System: Windows Server 2022 Standard Evaluation
@@ -32,7 +32,7 @@ KALI01
 - IP Address: 192.168.56.50
 - Status: Planned
 
-  ## Network Configuration
+## Network Configuration
 
 Domain Information
 - Domain Name: corp.in
@@ -45,7 +45,7 @@ VirtualBox Networks
 - NAT Gateway: 10.10.10.1
 - DHCP: Enabled on NAT-LAB
 
-  ## Completed Configurations
+## Completed Configurations
 
 - Installed and configured Oracle VirtualBox.
 - Installed Windows Server 2022.
@@ -59,7 +59,7 @@ VirtualBox Networks
 - Implemented USB storage restrictions on CL01.
 - Configured security auditing and verified Windows Security Events.
 
- ## Lab Safety and Isolation
+## Lab Safety and Isolation
 
 - The lab is intended for educational and authorised cybersecurity practice.
 - Windows 7 clients are unsupported and must remain isolated from untrusted networks.
