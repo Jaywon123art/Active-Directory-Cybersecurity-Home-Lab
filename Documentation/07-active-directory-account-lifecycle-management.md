@@ -109,14 +109,11 @@ The account was a member of IT_Staff.
 - Security group membership administration.
 - Departmental resource access verification.
 - Role-Based Access Control (RBAC).
-- Principle of Leas
-- t Privilege.
-
+- Principle of Least Privilege.
 
 ## 6. Overall Results
 
 The Active Directory account lifecycle management exercise was completed successfully.
-
 The following tasks were performed:
 
 - Disabled and re-enabled the Lab.Test account.
@@ -141,5 +138,4 @@ The exercise strengthened practical knowledge of Windows Server administration a
 **Project:** Active Directory Cybersecurity Home Lab  
 **Platform:** Oracle VirtualBox  
 **Domain:** corp.in  
-**Maintainer:** [@Jaywon123art](https://github.com/Jay
-won123art)
+**Maintainer:** [@Jaywon123art](https://github.com/Jaywon123art)
