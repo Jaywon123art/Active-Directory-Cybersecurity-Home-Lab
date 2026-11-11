@@ -1,4 +1,4 @@
-# Exercise 08 – Advanced Group Policy Management
+# 08 – Advanced Group Policy Management
 
 ## 1. Overview
 
