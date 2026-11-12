@@ -1,238 +1,355 @@
-# Active Directory Cybersecurity Home Lab
+# Active Directory & Cybersecurity Home Lab
 
-A hands-on cybersecurity and Windows infrastructure lab built with Oracle VM VirtualBox. This repository documents the design, configuration, testing, and lessons learned while building a small Active Directory domain from the ground up.
+A practical Windows Server, Active Directory and cybersecurity home lab built using Oracle VM VirtualBox.
 
-> **Project status:** In progress  
+This project documents the design, deployment, configuration, administration, security testing and recovery procedures of a simulated corporate IT environment. It demonstrates hands-on experience with Windows Server administration, Active Directory, Group Policy, access control, security auditing and backup management.
+
+> **Project Status:** In Progress  
+> **Completed Exercises:** 09  
 > **Environment:** Personal, isolated learning lab  
-> **Domain:** `corp.in`
+> **Domain:** `corp.in`  
+> **Platform:** Oracle VM VirtualBox
 
-## Project goals
+---
 
-- Build and administer a Windows Server 2022 Active Directory domain.
-- Configure DNS, domain-joined Windows clients, and a segmented virtual network.
-- Practice organizational unit (OU), user, and security-group administration.
-- Configure departmental file shares with both SMB share and NTFS permissions.
-- Apply and validate Group Policy security controls.
-- Enable Windows security auditing and investigate authentication events.
-- Develop practical troubleshooting, documentation, and defensive-security skills.
+## Project Objectives
 
-## Lab environment
+The main objectives of this project are to:
 
-### Host machine
+- Deploy and administer a Windows Server 2022 Active Directory domain.
+- Configure DNS and domain-joined Windows clients.
+- Build and manage Organizational Units, users and security groups.
+- Implement departmental file sharing and access restrictions.
+- Configure and troubleshoot Group Policy Objects.
+- Apply account security and password policies.
+- Monitor Windows security events and investigate account lockouts.
+- Practice Active Directory account lifecycle management.
+- Implement advanced Group Policy security controls.
+- Perform and verify Active Directory System State backups.
+- Develop practical Windows infrastructure and cybersecurity troubleshooting skills.
+
+---
+
+## Lab Environment
+
+### Host Machine
 
 | Component | Configuration |
 |---|---|
 | Laptop | Lenovo ThinkPad T470 |
-| Host operating system | Windows 10 |
+| Operating System | Windows 10 |
 | Processor | Intel Core i5 |
-| Memory | 8 GB RAM |
+| RAM | 8 GB |
 | Storage | SSD |
+| Virtualisation Platform | Oracle VM VirtualBox |
 
-The host has limited memory, so the virtual machines are run selectively rather than all at once.
+Due to the host's limited memory, virtual machines are operated selectively to maintain system performance.
 
-### Virtual machines
+### Virtual Machines
 
-| Machine | Operating system | Role | Lab network address |
+| Machine | Operating System | Role | IP Address |
 |---|---|---|---|
-| DC01 | Windows Server 2022 Standard Evaluation (Desktop Experience) | Domain Controller and DNS | 192.168.56.10 |
-| CL01 | Windows 7 Professional 64-bit | Domain client | 192.168.56.101 |
-| CL02 | Windows 7 Professional 64-bit | Domain client | 192.168.56.102 |
-| KALI01 | Kali Linux | Planned security-testing workstation | 192.168.56.50 (planned) |
+| DC01 | Windows Server 2022 Standard Evaluation | Domain Controller and DNS | `192.168.56.10` |
+| CL01 | Windows 7 Professional 64-bit | Domain Client | `192.168.56.101` |
+| CL02 | Windows 7 Professional 64-bit | Domain Client | `192.168.56.102` |
+| KALI01 | Kali Linux | Planned Security Testing Workstation | `192.168.56.50` (planned) |
 
-### Virtual networking
+### Network Configuration
 
 | Network | Type | Purpose |
 |---|---|---|
-| AD-LAB | VirtualBox Internal Network | Isolated communication between the domain controller and Windows clients |
-| NAT-LAB | VirtualBox NAT Network | Controlled outbound connectivity for the domain controller |
+| AD-LAB | VirtualBox Internal Network | Isolated communication between lab machines |
+| NAT-LAB | VirtualBox NAT Network | Controlled outbound network connectivity |
 
-- NAT-LAB subnet: `10.10.10.0/24`
-- NAT-LAB gateway: `10.10.10.1`
+**Network configuration:**
+
 - Active Directory domain: `corp.in`
 - NetBIOS name: `CORP`
 - Domain DNS server: `192.168.56.10`
+- NAT-LAB subnet: `10.10.10.0/24`
+- NAT-LAB gateway: `10.10.10.1`
 
-The Windows 7 clients are attached to the isolated AD-LAB network and are not intentionally given direct public-internet access.
+The AD-LAB network provides private communication for the domain environment. Windows 7 clients are legacy, unsupported operating systems and are used strictly for isolated learning exercises.
 
-## Work completed
+---
 
-The following exercises have been configured and tested in the lab.
+## Work Completed
 
-### 1. VirtualBox and lab foundation
+The following nine practical exercises have been completed and documented.
 
-- Installed VirtualBox on the Windows 10 host.
-- Created an organized folder structure for virtual machines, ISO files, snapshots, and tools.
-- Created the AD-LAB internal network and NAT-LAB NAT network.
-- Defined the virtual machine roles and IP addressing plan.
+### Exercise 01 – VirtualBox Installation and Lab Foundation
 
-### 2. Windows Server and Active Directory
+- Installed and configured Oracle VM VirtualBox.
+- Created an organised directory structure for virtual machines, ISO files, snapshots and tools.
+- Created the AD-LAB internal network.
+- Configured the NAT-LAB NAT network.
+- Established the virtual machine deployment and IP addressing plan.
 
-- Installed Windows Server 2022 Standard Evaluation with Desktop Experience.
+**Skills demonstrated:** Virtualisation, virtual machine configuration and network planning.
+
+### Exercise 02 – Windows Server and Active Directory Domain Setup
+
+- Installed Windows Server 2022 Standard Evaluation.
 - Renamed the server to `DC01`.
-- Configured its lab network interface with a static IP address.
-- Installed the Active Directory Domain Services and DNS Server roles.
-- Promoted DC01 to a domain controller and created the `corp.in` forest.
-- Verified domain DNS resolution and ran a DNS diagnostic check.
+- Configured a static IP address.
+- Installed Active Directory Domain Services and DNS Server.
+- Promoted DC01 to a domain controller.
+- Created the `corp.in` Active Directory domain.
+- Verified domain and DNS functionality.
 
-### 3. Domain client deployment
+**Skills demonstrated:** Windows Server administration, Active Directory deployment and DNS configuration.
 
-- Created two Windows 7 Professional virtual machines, CL01 and CL02.
-- Configured static IP addresses and pointed both clients to the domain DNS server.
-- Joined both clients to `corp.in`.
-- Confirmed that both computer accounts appeared in Active Directory Users and Computers.
+### Exercise 03 – Active Directory User and OU Management
 
-### 4. Organizational units, users, and groups
+- Created the company Organizational Unit structure.
+- Established departmental OUs for IT, HR and Finance.
+- Created user accounts for departmental testing.
+- Created and organised security groups.
+- Managed user and computer objects within Active Directory.
 
-Created a company OU structure with departmental OUs for IT, HR, and Finance, along with separate Users, Computers, and Groups OUs.
+**Example lab accounts:**
 
-Created fictional lab user accounts and matching global security groups:
-
-| Department | Example lab account | Security group |
+| Department | Account | Security Group |
 |---|---|---|
 | IT | `James.IT` | `IT_Staff` |
 | HR | `Sarah.HR` | `HR_Staff` |
 | Finance | `David.FIN` | `Finance_Staff` |
 
-Added each test account to its corresponding departmental security group.
+**Skills demonstrated:** Active Directory object management, OU administration and security-group management.
 
-### 5. Departmental file sharing and access control
+### Exercise 04 – Group Policy Management
 
-- Created separate IT, HR, and Finance folders on DC01.
-- Shared the folders over SMB.
-- Configured share permissions and NTFS permissions for the corresponding departmental groups.
-- Tested access from a domain client using each departmental test account.
+- Created and configured Group Policy Objects.
+- Applied policies to targeted users and computers.
+- Configured departmental restrictions.
+- Tested policy application and behaviour.
+- Used Group Policy troubleshooting tools to investigate policy issues.
 
-**Validation results:**
+**Skills demonstrated:** Group Policy administration, policy configuration and troubleshooting.
 
-| Test account | IT share | HR share | Finance share |
+### Exercise 05 – File Sharing and Permissions
+
+- Created IT, HR and Finance departmental folders.
+- Configured SMB network shares.
+- Applied NTFS permissions.
+- Used security groups to control departmental access.
+- Tested access from domain-joined clients.
+
+**Access validation:**
+
+| User | IT Share | HR Share | Finance Share |
 |---|---|---|---|
 | `James.IT` | Allowed | Denied | Denied |
 | `Sarah.HR` | Denied | Allowed | Denied |
 | `David.FIN` | Denied | Denied | Allowed |
 
-The tests demonstrated that access was restricted by the combined effect of SMB share permissions and NTFS permissions.
+**Skills demonstrated:** SMB file sharing, NTFS permissions, access control and Role-Based Access Control (RBAC).
 
-### 6. Domain password and account lockout policy
+### Exercise 06 – Security Auditing and Event Logs
 
-Configured the domain password and account lockout settings through Group Policy:
+- Configured Windows security auditing through Group Policy.
+- Audited successful and failed logon attempts.
+- Investigated Windows Security event logs.
+- Reviewed Event ID 4624 for successful logons.
+- Reviewed Event ID 4625 for failed logons.
+- Investigated account lockout Event ID 4740.
+- Identified the originating client computer.
+- Unlocked a test account through Active Directory Users and Computers.
 
-| Policy | Lab setting |
-|---|---:|
-| Minimum password length | 12 characters |
-| Password history | 10 passwords |
-| Minimum password age | 1 day |
-| Maximum password age | 90 days |
-| Password complexity | Enabled |
-| Account lockout threshold | 5 invalid attempts |
-| Account lockout duration | 10 minutes |
-| Reset lockout counter after | 10 minutes |
+**Skills demonstrated:** Event Viewer, security auditing, authentication troubleshooting and basic security investigation.
 
-Ran policy updates and verified the applicable domain account settings. Also tested password rejection and acceptance using a lab account.
+### Exercise 07 – Active Directory Account Lifecycle Management
 
-These values are used for this learning exercise and should not be treated as a universal production password-policy recommendation.
+- Created and managed a dedicated test account.
+- Disabled and re-enabled user accounts.
+- Reset user passwords.
+- Configured forced password changes at next logon.
+- Moved user accounts between Organizational Units.
+- Managed security-group membership.
+- Tested departmental resource access.
 
-### 7. Group Policy restrictions
+**Skills demonstrated:** User account administration, access management, least privilege and account lifecycle management.
 
-**HR Control Panel restriction**
-- Created and linked `GPO-HR-ControlPanel-Restriction` to the HR OU.
-- Enabled the policy that prohibits access to Control Panel and PC settings.
-- Confirmed that the HR test account was restricted while an IT test account was not.
+### Exercise 08 – Advanced Group Policy Management
 
-**CL01 removable-storage restriction**
-- Created and linked `GPO-CL01-USB-Restriction` to the custom Computers OU.
-- Configured removable-disk read, write, and execute restrictions.
-- Confirmed that the policy applied to CL01.
-- Tested a USB flash drive passed through to CL01 and confirmed that access was denied.
-- Confirmed that CL02, which was outside the targeted OU, could still access the USB drive.
+Practised advanced Group Policy administration techniques:
 
-### 8. Windows security auditing and account lockout monitoring
+- Security filtering using dedicated security groups.
+- GPO inheritance between parent and child OUs.
+- Block Inheritance.
+- GPO Enforcement.
+- Windows Management Instrumentation (WMI) filtering.
+- GPO backup and restoration.
+- Registry Preferences.
+- Policy verification using `gpresult`, `gpupdate` and `whoami`.
 
-- Created and linked `GPO-CL01-Security-Auditing`.
-- Enabled auditing of successful and failed logon events.
-- Generated test logon activity and examined the Security log on CL01.
-- Reviewed relevant Windows Security event IDs, including 4624 (successful logon) and 4625 (failed logon).
-- Deliberately entered an incorrect password five times for a dedicated test account.
-- Confirmed the domain account lockout event (Event ID 4740) on DC01.
-- Identified the originating client computer in the event details.
-- Unlocked the test account through Active Directory Users and Computers.
+**Skills demonstrated:** Advanced Group Policy administration, policy targeting, troubleshooting and configuration recovery.
 
-## Skills practiced
+### Exercise 09 – Active Directory Backup and Recovery
 
-- VirtualBox virtual machine and network configuration
-- Windows Server 2022 administration
-- Active Directory Domain Services
-- DNS configuration and troubleshooting
-- Domain joining and client administration
-- Organizational units, users, and security groups
-- SMB file sharing and NTFS access control
-- Group Policy creation, linking, and troubleshooting
-- Password and account lockout policy configuration
-- Windows Event Viewer and Security log analysis
-- Authentication troubleshooting and account lockout investigation
-- Basic security validation and technical documentation
+- Installed Windows Server Backup.
+- Created and attached a separate 20 GB virtual backup disk.
+- Initialised and formatted the disk using Disk Management.
+- Configured an NTFS backup volume labelled `DC01-Backup`.
+- Assigned drive letter `E:`.
+- Performed an Active Directory System State backup.
+- Inspected the Windows Server recovery wizard.
+- Confirmed that System State was available as a recovery option.
+- Verified the backup using the Windows Server Backup command-line utility.
 
-## Lessons learned
+**Verification command:**
+
+```cmd
+wbadmin get versions -backupTarget:E:
+```
+
+The command successfully identified the backup version and listed System State among the recoverable items.
+
+No live System State restoration was performed.
+
+**Skills demonstrated:** Windows Server Backup, System State backup, backup verification, recovery planning and disaster recovery fundamentals.
+
+---
+
+## Technical Skills Practised
+
+### Windows Server and Infrastructure
+- Windows Server 2022 administration.
+- Active Directory Domain Services.
+- DNS configuration and troubleshooting.
+- Domain controller administration.
+- Domain joining and client management.
+- Virtual machine deployment and management.
+
+### Active Directory Administration
+- Organizational Unit management.
+- User and computer account administration.
+- Security-group management.
+- Account lifecycle management.
+- Role-Based Access Control.
+- Least-privilege access management.
+
+### Group Policy and Security
+- Group Policy creation and configuration.
+- Security filtering.
+- GPO inheritance and enforcement.
+- WMI filtering.
+- Password and account lockout policies.
+- Removable-storage restrictions.
+- Security auditing and event-log investigation.
+
+### File Sharing and Backup
+- SMB network sharing.
+- NTFS permissions.
+- Departmental access restrictions.
+- Windows Server Backup.
+- Active Directory System State backup.
+- Backup verification using WBAdmin.
+- Recovery-point inspection.
+
+### Troubleshooting and Administration
+- Windows client troubleshooting.
+- DNS and network connectivity checks.
+- Group Policy troubleshooting.
+- Authentication and account lockout investigation.
+- Command-line administration.
+- Technical documentation.
+
+---
+
+## Lessons Learned
+
+Throughout the project, I have developed practical understanding of several important IT infrastructure concepts:
 
 - Active Directory clients depend on correctly configured DNS to locate domain services.
-- Share permissions and NTFS permissions work together to determine effective file access.
-- Group Policy scope and OU placement matter: a policy only affects the users or computers within its applicable scope.
-- Security logs provide useful evidence for investigating successful logons, failed logons, and account lockouts.
-- Testing with separate departmental accounts helps verify that access controls work as intended.
-- A change should be validated from the affected client, not assumed to have applied simply because it was configured on the server.
+- Organisational Unit placement and Group Policy scope determine which policies apply.
+- SMB share permissions and NTFS permissions work together to control resource access.
+- Security groups simplify permission management and support least-privilege access.
+- Windows Security logs provide evidence for investigating authentication activity.
+- Group Policy filtering and inheritance provide more precise administrative control.
+- Backups must be verified rather than assumed successful.
+- Domain controller recovery requires careful planning to protect Active Directory consistency.
+- Practical testing is essential for confirming that configurations work as intended.
 
-## Planned work
+---
 
-The lab is still being developed. Planned exercises include:
+## Planned Exercises
 
-- Active Directory account lifecycle management (disable, enable, reset, move, and manage group membership).
-- More advanced Group Policy administration.
-- Additional Windows Server administration and troubleshooting.
-- Network administration and troubleshooting exercises.
-- Windows security hardening.
-- Kali Linux VM deployment and configuration.
+The project remains under development.
+
+Future activities include:
+
+- Additional Windows Server administration.
+- Network administration and troubleshooting.
+- Windows Server security hardening.
+- Active Directory disaster recovery planning.
+- Improved backup protection and recovery testing.
+- Kali Linux deployment and configuration.
 - Controlled Active Directory security testing.
-- Defensive security and incident-response exercises.
-- Backup, recovery, and lab maintenance.
+- Defensive security monitoring.
+- Incident response exercises.
+- Further infrastructure documentation and maintenance.
 
-Only mark an exercise as complete after it has been configured and tested.
+Only exercises that have been practically configured and tested will be marked as completed.
 
-## Safety and scope
+---
 
-This repository describes a controlled educational environment. It is not a production deployment guide.
-
-- Windows 7 is end-of-life and unsupported. These clients are used only in an isolated lab for legacy-domain learning.
-- Do not expose the lab clients to untrusted networks or use them for everyday computing.
-- Use fictional accounts and sanitized screenshots in public documentation.
-- Never commit passwords, recovery keys, API keys, tokens, private configuration files, or personal information.
-- Obtain authorization before performing security tests, and keep all testing within systems you own or are explicitly permitted to assess.
-
-## Repository structure
-
-Documentation and sanitized evidence will be added progressively as the project develops.
+## Repository Structure
 
 ```text
-.
+Active-Directory-Cybersecurity-Home-Lab/
+│
 ├── README.md
+│
 ├── architecture/
 │   ├── lab-overview.md
 │   └── network-configuration.md
-├── documentation/
+│
+├── Documentation/
 │   ├── 01-virtualbox-setup.md
-│   ├── 02-windows-server-and-ad.md
-│   ├── 03-active-directory-users-and-groups.md
-│   ├── 04-departmental-file-sharing.md
-│   ├── 05-password-and-lockout-policy.md
-│   ├── 06-group-policy-restrictions.md
-│   └── 07-security-auditing.md
+│   ├── 02-active-directory-domain-setup.md
+│   ├── 03-active-directory-user-and-ou-management.md
+│   ├── 04-group-policy-management.md
+│   ├── 05-file-sharing-and-permissions.md
+│   ├── 06-security-auditing-and-event-logs.md
+│   ├── 07-active-directory-account-lifecycle-management.md
+│   ├── 08-advanced-group-policy-management.md
+│   └── 09-active-directory-backup-and-recovery.md
+│
 ├── screenshots/
 │   ├── active-directory/
 │   ├── file-sharing/
 │   ├── group-policy/
 │   └── security-auditing/
+│
 └── future-work/
     └── project-roadmap.md
-
-
 ```
-Maintainer: @Jaywon123art
-Project: Active Directory Cybersecurity Home Lab
+
+---
+
+## Safety and Scope
+
+This project is conducted within a controlled personal learning environment.
+
+- Windows 7 is end-of-life and unsupported. It is used only for isolated lab exercises.
+- Lab systems should not be exposed to untrusted networks.
+- Fictional accounts are used for demonstrations.
+- Screenshots and documentation should be sanitised before public sharing.
+- Passwords, recovery keys, API keys and other sensitive information must never be committed to the repository.
+- Security testing must only be performed on systems owned by the tester or where explicit permission has been granted.
+
+**Important backup limitation:** The dedicated backup virtual disk is separate from the DC01 operating system disk, but both are stored on the same physical host. Additional protected backup copies are necessary for stronger disaster recovery protection.
+
+---
+
+## Project Information
+
+**Project:** Active Directory & Cybersecurity Home Lab  
+**Maintainer:** [@Jaywon123art](https://github.com/Jaywon123art)  
+**Platform:** Oracle VM VirtualBox  
+**Domain:** `corp.in`  
+**Completed Exercises:** 09  
+**Project Status:** In Progress
+
+This repository serves as a record of practical learning, technical development, troubleshooting and hands-on experience in Windows infrastructure and cybersecurity.
