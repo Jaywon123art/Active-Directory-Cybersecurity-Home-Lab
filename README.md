@@ -342,7 +342,7 @@ Active-Directory-Cybersecurity-Home-Lab/
 │   ├── 05-Departmental File Sharing/
 │   ├── 06-Security Auditing/
 │   ├── 07-Account Lifecycle/
-│   ├── 08-Advanced GPO/
+│   ├── 08-Advance GPO/
 │   └── 09-Backup & Recovery/
 │
 └── future-work/
