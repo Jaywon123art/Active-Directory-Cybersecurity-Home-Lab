@@ -77,6 +77,24 @@ The AD-LAB network provides private communication for the domain environment. Wi
 
 The following nine practical exercises have been completed and documented.
 
+## Screenshot Evidence
+
+The following folders contain 74 screenshots documenting the practical configuration, testing and verification completed throughout this project.
+
+| Project Section | Screenshot Evidence |
+|---|---|
+| 01 – VirtualBox Setup | [View Screenshots](Screenshots/01-VirtualBox%20Setup/) |
+| 02 – Windows Server & AD | [View Screenshots](Screenshots/02-Windows%20Server%20%26%20AD/) |
+| 03 – AD Users, Groups & OUs | [View Screenshots](Screenshots/03-AD%20Users,%20Groups%20%26%20OUs/) |
+| 04 – Group Policy | [View Screenshots](Screenshots/04-Group%20Policy/) |
+| 05 – Departmental File Sharing | [View Screenshots](Screenshots/05-Departmental%20File%20Sharing/) |
+| 06 – Security Auditing | [View Screenshots](Screenshots/06-Security%20Auditing/) |
+| 07 – Account Lifecycle | [View Screenshots](Screenshots/07-Account%20Lifecycle/) |
+| 08 – Advanced GPO | [View Screenshots](Screenshots/08-Advance%20GPO/) |
+| 09 – Backup & Recovery | [View Screenshots](Screenshots/09-Backup%20%26%20Recovery/) |
+
+Each folder contains supporting screenshots for the corresponding practical exercise.
+
 ### Exercise 01 – VirtualBox Installation and Lab Foundation
 
 - Installed and configured Oracle VM VirtualBox.
@@ -316,11 +334,16 @@ Active-Directory-Cybersecurity-Home-Lab/
 │   ├── 08-advanced-group-policy-management.md
 │   └── 09-active-directory-backup-and-recovery.md
 │
-├── screenshots/
-│   ├── active-directory/
-│   ├── file-sharing/
-│   ├── group-policy/
-│   └── security-auditing/
+├── Screenshots/
+│   ├── 01-VirtualBox Setup/
+│   ├── 02-Windows Server & AD/
+│   ├── 03-AD Users, Groups & OUs/
+│   ├── 04-Group Policy/
+│   ├── 05-Departmental File Sharing/
+│   ├── 06-Security Auditing/
+│   ├── 07-Account Lifecycle/
+│   ├── 08-Advanced GPO/
+│   └── 09-Backup & Recovery/
 │
 └── future-work/
     └── project-roadmap.md
